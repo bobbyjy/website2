@@ -1,0 +1,82 @@
+---
+title: "Tables!"
+image: "IMG_1326.JPG"
+---
+
+## Project 3: Using Tables
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(skimr)
+library(survival)# a change
+library(survminer)
+library(reReg)
+library(KMsurv)
+library(Ecdat)
+```
+This is a study of Natural vs Anthropogenic soils for 
+
+```{r}
+#data repo: https://github.com/bobbyjy/MyData
+
+#load dataset into git repo
+thePath="https://raw.githubusercontent.com/bobbyjy/MyData/main/"
+
+#update with file name for project 1
+Anth=read_csv(paste(thePath,"Anthropogenic.csv",sep="/"))
+
+#load dataset into git repo
+thePath="https://raw.githubusercontent.com/bobbyjy/MyData/main/"
+
+#update with file name for project 1
+Nat=read_csv(paste(thePath,"Natural.csv",sep="/"))
+
+Anth<-Anth %>% mutate(anthro=1)
+Nat<-Nat %>% mutate(anthro=0)
+coraldf <- dplyr::combine(Anth,Nat)
+
+```
+```{r}
+#comparing temperature and survival
+Temp <- coraldf %>% select(Temperature, Time, Status)
+km.Temp =survfit(Surv(Temp$Time,Temp$Status)~Temp$Temperature)
+
+p <- ggsurvplot(fit=km.Temp, data=Temp,
+           legend = "bottom", risk.table = F,conf.int=F, legend.title = "Study Temperatures: ") +
+    labs(
+        title="Visualizing the Impact of Global Warming on Coral Populations",
+        subtitle = "Observing Coral Survival in 26C and 30C Groups",
+        x="Time Until Coral Death (Weeks)"
+    ) 
+
+p$plot + scale_colour_manual(values = c("turquoise1", "red"))+
+  theme(panel.background = element_rect(fill = "grey12"),
+        plot.background = element_rect(fill="grey12"),
+        axis.text.x=element_text(colour="white"),
+        axis.text.y=element_text(colour="white"),
+        plot.title = element_text(colour = "white"),
+        axis.title.x = element_text(colour = "white"),
+        axis.title.y = element_text(colour = "white"),
+        axis.line.x = element_line(color="white"),
+        axis.line.y = element_line(color="white"),
+        legend.key = element_rect(fill = "grey12"),
+        legend.background = element_rect(fill="grey12"),
+        legend.text = element_text(color = "white"),
+        legend.title = element_text(color = "white"),
+        plot.subtitle = element_text(color="white"))+
+   annotate("text", x = 2, y = .25, label = "30C Group", color = "red", fontface = "bold")+
+  annotate("text", x = 6, y = .65, label = "26C Group", color = "turquoise1", fontface = "bold")
+
+#add annotation labels for the temp groups
+#fix legend background
+# setwd("C:\\Users\\corey\\OneDrive\\Documents\\GitHub\\599_Project1")
+# ggsave("GlobalWarmingImpact.png", dpi = 300)
+
+survdiff(Surv(Temp$Time,Temp$Status)~Temp$Temperature)
+
+summary(km.Temp)
+
+
+

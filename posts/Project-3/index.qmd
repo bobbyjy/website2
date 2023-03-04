@@ -1,0 +1,80 @@
+---
+title: "Presentation"
+image: "IMG_5192.JPG"
+author: "Corey Cassell"
+format: 
+  revealjs: 
+    multiplex: false
+    preview-links: true
+    #theme: blood
+    code-fold: true
+---
+::: {.incremental}
+## About Me
+
+- My name is Corey Cassell, I am an engineer in aerospace and aspiring data scientist.
+- I am interested in applying machine learning models to manufacturing problems to help predict and respond to issues before they occur. 
+:::
+
+::: {.incremental}
+
+## The Data
+```{r, message=FALSE,warning=FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(skimr)
+library(survival)# a change
+library(survminer)
+library(reReg)
+library(KMsurv)
+library(Ecdat)
+#install.packages("plotly")
+library(plotly)
+library(DT)
+#install.packages("ggiraph")
+library(ggiraph)
+
+
+ds2 <- read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot_orig.rds")
+datatable(head(ds2,n=1))
+
+```
+:::
+
+::: {.incremental}
+## Chart 1
+```{r, message=FALSE,warning=FALSE}
+#| code-fold: true
+#| code-summary: "Show the code"
+gg <- ds2 %>% 
+  select(taster_name) %>% 
+  group_by(taster_name) %>% 
+  summarise(taster_name, reviews = n()) %>% 
+  distinct() %>% 
+  arrange(reviews) %>% 
+  ggplot(aes(reviews,reorder(taster_name,reviews), fill = taster_name))+
+  #geom_col()+
+  geom_col_interactive(aes(tooltip = taster_name, data_id = taster_name), show.legend = FALSE)+
+  scale_fill_viridis_d()+
+  labs(title = "Which tasters have tasted the most?")
+
+x <- girafe(ggobj = gg, width_svg = 8, height_svg = 6,
+            options = list(
+              opts_hover_inv(css = "opacity:0.1;"),
+              opts_hover(css= "stroke-width:2;")
+            ))
+x
+```
+:::
+::: {.incremental}
+
+```{r}
+#I'm doing some more testing
+```
+
+:::
+
+
