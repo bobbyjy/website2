@@ -1,11 +1,60 @@
 ---
-title: "website6"
+title: "Corey Cassell"
+about:
+  template: marquee
+  #image: elephant.jpg
 ---
 
-This is a Quarto website.
+A Portland Oregon based engineer and masters in data science candidate with 7+ years of broad-based experience utilizing advanced data and analytical tools, building production grade metrics and visualizations, while integrating industrial engineering principles to drive continuous improvement for domestic and international customers. 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Education
+Willamette University 					                                      
+Masters in Data Science (MSDS)
+Planned Graduation August 2023
 
-```{r}
-#I"m testing a change
-```
+California Polytechnical State University, San Luis Obispo                             				
+Bachelor of Science, Industrial Engineering
+
+## Skills
+SOFTWARE, PLATFORMS, AND PROGRAMMING 
+
+*	SQL – Accessing, cleaning, and joining high volume data in a fast-paced manufacturing environment. 
+*	R – Crafting visualizations through base 
+*	R and ggplot. Writing web scraping scripts. Tuning and implementing machine learning models. 
+*	Tableau – Design, build, implementation of production facing metrics and analytical tools for manager and executive level communication. Improving user access and understanding of production performance to enable better allocation of resources. 
+*	Access/Excel/VBA – creating automated metrics and scrips to answer emergent questions.
+*	BASH – Basic file navigation and manipulation. Remote server interaction. Docker file building and deployment.   
+*	GitHub – Project management and version control. 
+*	Python – Basic level understanding and capability.
+
+DATA SCIENCE 
+
+*	Data Visualization – Using R and Tableau to analyze and interpret business anomalies through uncovering hidden trends. 
+*	Data Engineering – Employing the ETL process in the setup, design, and management of PostgreSQL server/database relationship. joining of tables from cross platform databases (Teradata/Oracle/Microsoft SQL Server) and transforming information into useable content.  
+*	Machine learning – Leveraging linear regression-based models to predict next day manufacturing performance for more efficient current day resource allocation.
+*	Survival Analysis and survival curve plotting to predict product life expectancy
+
+## Experience
+
+INDUSTRIAL ENGINEER III, BOEING
+October 2016 – Current
+
+BOEING PORTLAND, OR, USA – SUPPORT FOR ACTUATION SYSTEMS MANUFACTURING TEAM
+
+*	Team focal for analytics and metrics development using Tableau, Access, and Excel platforms
+*	Generation of Tableau dashboards through the integration of multiplatform SQL query building
+*	Development of statistical standard processes for production performance visibility including data cleaning, preparation, analysis, and site leadership level communication
+*	Automated daily report design, construction, and support
+*	Machining cell layout design and implementation
+*	Detailed production schedule recovery planning 
+*	Plant staffing and machining capacity analysis in dynamic demand environment
+
+BOEING SHEFFIELD, UK – 7 MONTHS TEMPORARY ASSIGNMENT 
+
+*	User story design and development for web metric deployment
+*	Operation level time study analysis enabling targeted problem solving for cycle time reduction 
+*	Training and support of Sheffield IE team
+*	Lean 3P (production preparation process) workshop support for transmission housings
+*	Third party supplier capacity and supply chain buffering analysis
+*	Work statement and movement scenario analysis providing solutions for over capacity cells
+*	New product cross site production planning and integration 
