@@ -12,6 +12,8 @@ website:
         text: Presentation
       - href: InteractiePlots.qmd
         text: Interactive Plots
+      - href: ParamMarkdown.qmd
+        text: Interactive Plots
 
 format:
   html:
