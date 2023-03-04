@@ -8,7 +8,7 @@ website:
     left:
       - href: index.qmd
         text: Resume
-      - href: about.qmd
+      - href: Presentation.qmd
         text: Presentation
 
 format:
