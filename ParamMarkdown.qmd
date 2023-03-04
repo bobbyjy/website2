@@ -1,0 +1,17 @@
+---
+title: "Parmaterized Markdown Example"
+#image: "IMG_5192.JPG"
+author: "Corey Cassell"
+format: 
+  revealjs: 
+    multiplex: false
+    preview-links: true
+    theme: blood
+    code-fold: true
+---
+
+```{r}
+#a markdown will go here!
+```
+
+
