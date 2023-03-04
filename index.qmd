@@ -2,7 +2,7 @@
 title: "Corey Cassell"
 about:
   template: marquee
-  #image: elephant.jpg
+  image: elephant.jpg
 ---
 
 A Portland Oregon based engineer and masters in data science candidate with 7+ years of broad-based experience utilizing advanced data and analytical tools, building production grade metrics and visualizations, while integrating industrial engineering principles to drive continuous improvement for domestic and international customers. 
