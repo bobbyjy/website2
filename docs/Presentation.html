@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>website6 - Corey Cassell</title>
+<title>website6 - Presentation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -33,6 +96,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -62,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -79,11 +143,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="./index.html">
  <span class="menu-text">Resume</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Presentation.html">
+    <a class="nav-link active" href="./Presentation.html" aria-current="page">
  <span class="menu-text">Presentation</span></a>
   </li>  
 </ul>
@@ -96,81 +160,40 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
-<div class="quarto-about-marquee">
-  <div class="about-image-container">
-    <img src="elephant.jpg" class="about-image " style="width: 100%;">
-  </div>
-  <div class="about-contents">
-    <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Corey Cassell</h1>
+<h1 class="title">Presentation</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
-  </div>
-</header> <main class="content" id="quarto-document-content">
-<p>A Portland Oregon based engineer and masters in data science candidate with 7+ years of broad-based experience utilizing advanced data and analytical tools, building production grade metrics and visualizations, while integrating industrial engineering principles to drive continuous improvement for domestic and international customers.</p>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<p>Willamette University<br>
-Masters in Data Science (MSDS) Planned Graduation August 2023</p>
-<p>California Polytechnical State University, San Luis Obispo<br>
-Bachelor of Science, Industrial Engineering</p>
-</section>
-<section id="skills" class="level2">
-<h2 data-anchor-id="skills">Skills</h2>
-<p>SOFTWARE, PLATFORMS, AND PROGRAMMING</p>
-<ul>
-<li>SQL – Accessing, cleaning, and joining high volume data in a fast-paced manufacturing environment.</li>
-<li>R – Crafting visualizations through base</li>
-<li>R and ggplot. Writing web scraping scripts. Tuning and implementing machine learning models.</li>
-<li>Tableau – Design, build, implementation of production facing metrics and analytical tools for manager and executive level communication. Improving user access and understanding of production performance to enable better allocation of resources.</li>
-<li>Access/Excel/VBA – creating automated metrics and scrips to answer emergent questions.</li>
-<li>BASH – Basic file navigation and manipulation. Remote server interaction. Docker file building and deployment.<br>
-</li>
-<li>GitHub – Project management and version control.</li>
-<li>Python – Basic level understanding and capability.</li>
-</ul>
-<p>DATA SCIENCE</p>
-<ul>
-<li>Data Visualization – Using R and Tableau to analyze and interpret business anomalies through uncovering hidden trends.</li>
-<li>Data Engineering – Employing the ETL process in the setup, design, and management of PostgreSQL server/database relationship. joining of tables from cross platform databases (Teradata/Oracle/Microsoft SQL Server) and transforming information into useable content.<br>
-</li>
-<li>Machine learning – Leveraging linear regression-based models to predict next day manufacturing performance for more efficient current day resource allocation.</li>
-<li>Survival Analysis and survival curve plotting to predict product life expectancy</li>
-</ul>
-</section>
-<section id="experience" class="level2">
-<h2 data-anchor-id="experience">Experience</h2>
-<p>INDUSTRIAL ENGINEER III, BOEING October 2016 – Current</p>
-<p>BOEING PORTLAND, OR, USA – SUPPORT FOR ACTUATION SYSTEMS MANUFACTURING TEAM</p>
-<ul>
-<li>Team focal for analytics and metrics development using Tableau, Access, and Excel platforms</li>
-<li>Generation of Tableau dashboards through the integration of multiplatform SQL query building</li>
-<li>Development of statistical standard processes for production performance visibility including data cleaning, preparation, analysis, and site leadership level communication</li>
-<li>Automated daily report design, construction, and support</li>
-<li>Machining cell layout design and implementation</li>
-<li>Detailed production schedule recovery planning</li>
-<li>Plant staffing and machining capacity analysis in dynamic demand environment</li>
-</ul>
-<p>BOEING SHEFFIELD, UK – 7 MONTHS TEMPORARY ASSIGNMENT</p>
-<ul>
-<li>User story design and development for web metric deployment</li>
-<li>Operation level time study analysis enabling targeted problem solving for cycle time reduction</li>
-<li>Training and support of Sheffield IE team</li>
-<li>Lean 3P (production preparation process) workshop support for transmission housings</li>
-<li>Third party supplier capacity and supply chain buffering analysis</li>
-<li>Work statement and movement scenario analysis providing solutions for over capacity cells</li>
-<li>New product cross site production planning and integration</li>
-</ul>
 
-
-</section>
-</main> 
+    
+  
+    
   </div>
+  
+
+</header>
+
+<p>About this site</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
 </div>
- <!-- /main -->
+</div>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -191,6 +214,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;

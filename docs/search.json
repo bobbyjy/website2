@@ -9,8 +9,99 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "website6",
+    "title": "Corey Cassell",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "A Portland Oregon based engineer and masters in data science candidate with 7+ years of broad-based experience utilizing advanced data and analytical tools, building production grade metrics and visualizations, while integrating industrial engineering principles to drive continuous improvement for domestic and international customers."
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Corey Cassell",
+    "section": "Education",
+    "text": "Education\nWillamette University\nMasters in Data Science (MSDS) Planned Graduation August 2023\nCalifornia Polytechnical State University, San Luis Obispo\nBachelor of Science, Industrial Engineering"
+  },
+  {
+    "objectID": "index.html#skills",
+    "href": "index.html#skills",
+    "title": "Corey Cassell",
+    "section": "Skills",
+    "text": "Skills\nSOFTWARE, PLATFORMS, AND PROGRAMMING\n\nSQL – Accessing, cleaning, and joining high volume data in a fast-paced manufacturing environment.\nR – Crafting visualizations through base\nR and ggplot. Writing web scraping scripts. Tuning and implementing machine learning models.\nTableau – Design, build, implementation of production facing metrics and analytical tools for manager and executive level communication. Improving user access and understanding of production performance to enable better allocation of resources.\nAccess/Excel/VBA – creating automated metrics and scrips to answer emergent questions.\nBASH – Basic file navigation and manipulation. Remote server interaction. Docker file building and deployment.\n\nGitHub – Project management and version control.\nPython – Basic level understanding and capability.\n\nDATA SCIENCE\n\nData Visualization – Using R and Tableau to analyze and interpret business anomalies through uncovering hidden trends.\nData Engineering – Employing the ETL process in the setup, design, and management of PostgreSQL server/database relationship. joining of tables from cross platform databases (Teradata/Oracle/Microsoft SQL Server) and transforming information into useable content.\n\nMachine learning – Leveraging linear regression-based models to predict next day manufacturing performance for more efficient current day resource allocation.\nSurvival Analysis and survival curve plotting to predict product life expectancy"
+  },
+  {
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
+    "title": "Corey Cassell",
+    "section": "Experience",
+    "text": "Experience\nINDUSTRIAL ENGINEER III, BOEING October 2016 – Current\nBOEING PORTLAND, OR, USA – SUPPORT FOR ACTUATION SYSTEMS MANUFACTURING TEAM\n\nTeam focal for analytics and metrics development using Tableau, Access, and Excel platforms\nGeneration of Tableau dashboards through the integration of multiplatform SQL query building\nDevelopment of statistical standard processes for production performance visibility including data cleaning, preparation, analysis, and site leadership level communication\nAutomated daily report design, construction, and support\nMachining cell layout design and implementation\nDetailed production schedule recovery planning\nPlant staffing and machining capacity analysis in dynamic demand environment\n\nBOEING SHEFFIELD, UK – 7 MONTHS TEMPORARY ASSIGNMENT\n\nUser story design and development for web metric deployment\nOperation level time study analysis enabling targeted problem solving for cycle time reduction\nTraining and support of Sheffield IE team\nLean 3P (production preparation process) workshop support for transmission housings\nThird party supplier capacity and supply chain buffering analysis\nWork statement and movement scenario analysis providing solutions for over capacity cells\nNew product cross site production planning and integration"
+  },
+  {
+    "objectID": "posts/Project-1/index.html",
+    "href": "posts/Project-1/index.html",
+    "title": "ProjectsTEST",
+    "section": "",
+    "text": "An example of a KNN model that we are building and improving in class. The objective is to accurately predict the regional origin of a bottle of wine.\n\n\n\n\n\n\n\n\n\n\nAccuracy is very high for Burgundy, California, and Oregon regions. Smaller regions performed substantially worse, potentially due to significantly lower availability of data.\n\n\nShow the code\n#PROJECT 1 Feature Engineering\nset.seed(504)\nwine_index <- createDataPartition(wine$province, p = 0.8, list = FALSE)\ntrain <- wine[ wine_index, ]\ntest <- wine[-wine_index, ]\n\n#10 fold cross validation\ncontrol <- trainControl(\n                           method = \"repeatedcv\",\n                           number = 3\n                           )\n\nfit <- train(province ~ .,\n             data = train, \n             method = \"knn\",#knn\n             tuneLength = 20, #the 30 different values for K\n             metric = \"Kappa\",\n             trControl = control)\n\nconfusionMatrix(predict(fit, test),factor(test$province))\n\n\nConfusion Matrix and Statistics\n\n                   Reference\nPrediction          Burgundy California Casablanca_Valley Marlborough New_York\n  Burgundy               213          8                 0           3        2\n  California               5        689                 9          15        8\n  Casablanca_Valley        0          0                 8           0        1\n  Marlborough              0          1                 0          10        0\n  New_York                 0          0                 0           1        4\n  Oregon                  20         93                 9          16       11\n                   Reference\nPrediction          Oregon\n  Burgundy              16\n  California           131\n  Casablanca_Valley      1\n  Marlborough            0\n  New_York               0\n  Oregon               399\n\nOverall Statistics\n                                          \n               Accuracy : 0.7908          \n                 95% CI : (0.7705, 0.8101)\n    No Information Rate : 0.4728          \n    P-Value [Acc > NIR] : < 2.2e-16       \n                                          \n                  Kappa : 0.6678          \n                                          \n Mcnemar's Test P-Value : NA              \n\nStatistics by Class:\n\n                     Class: Burgundy Class: California Class: Casablanca_Valley\nSensitivity                   0.8950            0.8710                 0.307692\nSpecificity                   0.9798            0.8095                 0.998786\nPos Pred Value                0.8802            0.8040                 0.800000\nNeg Pred Value                0.9825            0.8750                 0.989176\nPrevalence                    0.1423            0.4728                 0.015541\nDetection Rate                0.1273            0.4118                 0.004782\nDetection Prevalence          0.1447            0.5123                 0.005977\nBalanced Accuracy             0.9374            0.8403                 0.653239\n                     Class: Marlborough Class: New_York Class: Oregon\nSensitivity                    0.222222        0.153846        0.7294\nSpecificity                    0.999386        0.999393        0.8677\nPos Pred Value                 0.909091        0.800000        0.7281\nNeg Pred Value                 0.978941        0.986811        0.8684\nPrevalence                     0.026898        0.015541        0.3270\nDetection Rate                 0.005977        0.002391        0.2385\nDetection Prevalence           0.006575        0.002989        0.3276\nBalanced Accuracy              0.610804        0.576619        0.7986\n\n\n\n\n\nThis graphs kappa performance of the model over a range of K values. Kappa is a measure of model performance against random chance classification. We want to achieve the highest kappa value possible.\n\n\nShow the code\nggplot(fit, metric=\"Kappa\")"
+  },
+  {
+    "objectID": "posts/Project-1/index.html#project-3-using-tables",
+    "href": "posts/Project-1/index.html#project-3-using-tables",
+    "title": "ProjectsTEST",
+    "section": "Project 3: Using Tables",
+    "text": "Project 3: Using Tables\nThis is a study of Natural vs Anthropogenic soils for\n\n\nShow the code\n#data repo: https://github.com/bobbyjy/MyData\n\n#load dataset into git repo\nthePath=\"https://raw.githubusercontent.com/bobbyjy/MyData/main/\"\n\n#update with file name for project 1\nAnth=read_csv(paste(thePath,\"Anthropogenic.csv\",sep=\"/\"))\n\n\nRows: 80 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (4): Temperature, Sediment, Time, Status\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nShow the code\n#load dataset into git repo\nthePath=\"https://raw.githubusercontent.com/bobbyjy/MyData/main/\"\n\n#update with file name for project 1\nNat=read_csv(paste(thePath,\"Natural.csv\",sep=\"/\"))\n\n\nRows: 1176 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (4): Temperature, Sediment, Time, Status\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nShow the code\nAnth<-Anth %>% mutate(anthro=1)\nNat<-Nat %>% mutate(anthro=0)\ncoraldf <- dplyr::combine(Anth,Nat)\n\n\nWarning: `combine()` was deprecated in dplyr 1.0.0.\nℹ Please use `vctrs::vec_c()` instead.\n\n\n#| code-fold: true #| code-summary: “Show the code” #comparing temperature and survival Temp <- coraldf %>% select(Temperature, Time, Status) km.Temp =survfit(Surv(Temp\\(Time,Temp\\)Status)~Temp$Temperature)\np <- ggsurvplot(fit=km.Temp, data=Temp, legend = “bottom”, risk.table = F,conf.int=F, legend.title = “Study Temperatures:”) + labs( title=“Visualizing the Impact of Global Warming on Coral Populations”, subtitle = “Observing Coral Survival in 26C and 30C Groups”, x=“Time Until Coral Death (Weeks)” )\np$plot + scale_colour_manual(values = c(“turquoise1”, “red”))+ theme(panel.background = element_rect(fill = “grey12”), plot.background = element_rect(fill=“grey12”), axis.text.x=element_text(colour=“white”), axis.text.y=element_text(colour=“white”), plot.title = element_text(colour = “white”), axis.title.x = element_text(colour = “white”), axis.title.y = element_text(colour = “white”), axis.line.x = element_line(color=“white”), axis.line.y = element_line(color=“white”), legend.key = element_rect(fill = “grey12”), legend.background = element_rect(fill=“grey12”), legend.text = element_text(color = “white”), legend.title = element_text(color = “white”), plot.subtitle = element_text(color=“white”))+ annotate(“text”, x = 2, y = .25, label = “30C Group”, color = “red”, fontface = “bold”)+ annotate(“text”, x = 6, y = .65, label = “26C Group”, color = “turquoise1”, fontface = “bold”)\n#add annotation labels for the temp groups #fix legend background # setwd(“C:\\Users\\corey\\OneDrive\\Documents\\GitHub\\599_Project1”) # ggsave(“GlobalWarmingImpact.png”, dpi = 300)\nsurvdiff(Surv(Temp\\(Time,Temp\\)Status)~Temp$Temperature)\nsummary(km.Temp)"
+  },
+  {
+    "objectID": "posts/Project-2/index.html",
+    "href": "posts/Project-2/index.html",
+    "title": "Tables!",
+    "section": "",
+    "text": "This is a study of Natural vs Anthropogenic soils for\n\n#data repo: https://github.com/bobbyjy/MyData\n\n#load dataset into git repo\nthePath=\"https://raw.githubusercontent.com/bobbyjy/MyData/main/\"\n\n#update with file name for project 1\nAnth=read_csv(paste(thePath,\"Anthropogenic.csv\",sep=\"/\"))\n\nRows: 80 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (4): Temperature, Sediment, Time, Status\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n#load dataset into git repo\nthePath=\"https://raw.githubusercontent.com/bobbyjy/MyData/main/\"\n\n#update with file name for project 1\nNat=read_csv(paste(thePath,\"Natural.csv\",sep=\"/\"))\n\nRows: 1176 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl (4): Temperature, Sediment, Time, Status\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\nAnth<-Anth %>% mutate(anthro=1)\nNat<-Nat %>% mutate(anthro=0)\ncoraldf <- dplyr::combine(Anth,Nat)\n\nWarning: `combine()` was deprecated in dplyr 1.0.0.\nℹ Please use `vctrs::vec_c()` instead.\n\n\n#comparing temperature and survival Temp <- coraldf %>% select(Temperature, Time, Status) km.Temp =survfit(Surv(Temp\\(Time,Temp\\)Status)~Temp$Temperature)\np <- ggsurvplot(fit=km.Temp, data=Temp, legend = “bottom”, risk.table = F,conf.int=F, legend.title = “Study Temperatures:”) + labs( title=“Visualizing the Impact of Global Warming on Coral Populations”, subtitle = “Observing Coral Survival in 26C and 30C Groups”, x=“Time Until Coral Death (Weeks)” )\np$plot + scale_colour_manual(values = c(“turquoise1”, “red”))+ theme(panel.background = element_rect(fill = “grey12”), plot.background = element_rect(fill=“grey12”), axis.text.x=element_text(colour=“white”), axis.text.y=element_text(colour=“white”), plot.title = element_text(colour = “white”), axis.title.x = element_text(colour = “white”), axis.title.y = element_text(colour = “white”), axis.line.x = element_line(color=“white”), axis.line.y = element_line(color=“white”), legend.key = element_rect(fill = “grey12”), legend.background = element_rect(fill=“grey12”), legend.text = element_text(color = “white”), legend.title = element_text(color = “white”), plot.subtitle = element_text(color=“white”))+ annotate(“text”, x = 2, y = .25, label = “30C Group”, color = “red”, fontface = “bold”)+ annotate(“text”, x = 6, y = .65, label = “26C Group”, color = “turquoise1”, fontface = “bold”)\n#add annotation labels for the temp groups #fix legend background # setwd(“C:\\Users\\corey\\OneDrive\\Documents\\GitHub\\599_Project1”) # ggsave(“GlobalWarmingImpact.png”, dpi = 300)\nsurvdiff(Surv(Temp\\(Time,Temp\\)Status)~Temp$Temperature)\nsummary(km.Temp)"
+  },
+  {
+    "objectID": "posts/Project-3/index.html#about-me",
+    "href": "posts/Project-3/index.html#about-me",
+    "title": "Presentation",
+    "section": "About Me",
+    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in aerospace and aspiring data scientist.\nI am interested in applying machine learning models to manufacturing problems to help predict and respond to issues before they occur."
+  },
+  {
+    "objectID": "posts/Project-3/index.html#the-data",
+    "href": "posts/Project-3/index.html#the-data",
+    "title": "Presentation",
+    "section": "The Data",
+    "text": "The Data"
+  },
+  {
+    "objectID": "posts/Project-3/index.html#chart-1",
+    "href": "posts/Project-3/index.html#chart-1",
+    "title": "Presentation",
+    "section": "Chart 1",
+    "text": "Chart 1\n\n\nShow the code\ngg <- ds2 %>% \n  select(taster_name) %>% \n  group_by(taster_name) %>% \n  summarise(taster_name, reviews = n()) %>% \n  distinct() %>% \n  arrange(reviews) %>% \n  ggplot(aes(reviews,reorder(taster_name,reviews), fill = taster_name))+\n  #geom_col()+\n  geom_col_interactive(aes(tooltip = taster_name, data_id = taster_name), show.legend = FALSE)+\n  scale_fill_viridis_d()+\n  labs(title = \"Which tasters have tasted the most?\")\n\nx <- girafe(ggobj = gg, width_svg = 8, height_svg = 6,\n            options = list(\n              opts_hover_inv(css = \"opacity:0.1;\"),\n              opts_hover(css= \"stroke-width:2;\")\n            ))\nx"
+  },
+  {
+    "objectID": "posts/Project-4/index.html",
+    "href": "posts/Project-4/index.html",
+    "title": "Interactive Plots",
+    "section": "",
+    "text": "Show the code\nds2 <- read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot_orig.rds\")\ndatatable(head(ds2))"
+  },
+  {
+    "objectID": "posts/Project-4/index.html#plot-1-using-ggiraph",
+    "href": "posts/Project-4/index.html#plot-1-using-ggiraph",
+    "title": "Interactive Plots",
+    "section": "Plot 1 (Using ggiraph)",
+    "text": "Plot 1 (Using ggiraph)\n\n\nShow the code\ngg <- ds2 %>% \n  select(taster_name) %>% \n  group_by(taster_name) %>% \n  summarise(taster_name, reviews = n()) %>% \n  distinct() %>% \n  arrange(reviews) %>% \n  ggplot(aes(reviews,reorder(taster_name,reviews), fill = taster_name))+\n  #geom_col()+\n  geom_col_interactive(aes(tooltip = taster_name, data_id = taster_name), show.legend = FALSE)+\n  scale_fill_viridis_d()+\n  labs(title = \"Which tasters have tasted the most?\")\n\nx <- girafe(ggobj = gg, width_svg = 8, height_svg = 6,\n            options = list(\n              opts_hover_inv(css = \"opacity:0.1;\"),\n              opts_hover(css= \"stroke-width:2;\")\n            ))\n\nx"
+  },
+  {
+    "objectID": "posts/Project-4/index.html#plot-2-using-plotly",
+    "href": "posts/Project-4/index.html#plot-2-using-plotly",
+    "title": "Interactive Plots",
+    "section": "Plot 2 (Using Plotly)",
+    "text": "Plot 2 (Using Plotly)\n\n\nShow the code\na<-ds2 %>% \n  ggplot(aes(price,points, text = paste(\"tasted by: \", taster_name,\n                                        \"<br>\",\n                                         \"description: \", description), color = points))+\n  geom_point(show.legend = FALSE)+\n  theme_bw()+\n  labs(title = \"Wine Price vs. Rating\", x = \"Rating\", y = \"Price\")\n\n\nggp <- ggplotly(a)\n\nggp %>% layout(hovermode = \"closest\")"
+  },
+  {
+    "objectID": "Presentation.html",
+    "href": "Presentation.html",
+    "title": "Presentation",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]
