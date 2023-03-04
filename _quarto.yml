@@ -10,7 +10,7 @@ website:
         text: Resume
       - href: Presentation.qmd
         text: Presentation
-      - href: InteractivePlots.qmd
+      - href: InteractiePlots.qmd
         text: Interactive Plots
 
 format:
