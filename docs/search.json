@@ -35,10 +35,45 @@
     "text": "Experience\nINDUSTRIAL ENGINEER III, BOEING October 2016 – Current\nBOEING PORTLAND, OR, USA – SUPPORT FOR ACTUATION SYSTEMS MANUFACTURING TEAM\n\nTeam focal for analytics and metrics development using Tableau, Access, and Excel platforms\nGeneration of Tableau dashboards through the integration of multiplatform SQL query building\nDevelopment of statistical standard processes for production performance visibility including data cleaning, preparation, analysis, and site leadership level communication\nAutomated daily report design, construction, and support\nMachining cell layout design and implementation\nDetailed production schedule recovery planning\nPlant staffing and machining capacity analysis in dynamic demand environment\n\nBOEING SHEFFIELD, UK – 7 MONTHS TEMPORARY ASSIGNMENT\n\nUser story design and development for web metric deployment\nOperation level time study analysis enabling targeted problem solving for cycle time reduction\nTraining and support of Sheffield IE team\nLean 3P (production preparation process) workshop support for transmission housings\nThird party supplier capacity and supply chain buffering analysis\nWork statement and movement scenario analysis providing solutions for over capacity cells\nNew product cross site production planning and integration"
   },
   {
-    "objectID": "Presentation.html",
-    "href": "Presentation.html",
-    "title": "Presentation",
+    "objectID": "InteractiePlots.html",
+    "href": "InteractiePlots.html",
+    "title": "Interactive Plots",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Show the code\nds2 <- read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot_orig.rds\")\ndatatable(head(ds2))"
+  },
+  {
+    "objectID": "InteractiePlots.html#plot-1-using-ggiraph",
+    "href": "InteractiePlots.html#plot-1-using-ggiraph",
+    "title": "Interactive Plots",
+    "section": "Plot 1 (Using ggiraph)",
+    "text": "Plot 1 (Using ggiraph)\n\n\nShow the code\ngg <- ds2 %>% \n  select(taster_name) %>% \n  group_by(taster_name) %>% \n  summarise(taster_name, reviews = n()) %>% \n  distinct() %>% \n  arrange(reviews) %>% \n  ggplot(aes(reviews,reorder(taster_name,reviews), fill = taster_name))+\n  #geom_col()+\n  geom_col_interactive(aes(tooltip = taster_name, data_id = taster_name), show.legend = FALSE)+\n  scale_fill_viridis_d()+\n  labs(title = \"Which tasters have tasted the most?\")\nx <- girafe(ggobj = gg, width_svg = 8, height_svg = 6,\n            options = list(\n              opts_hover_inv(css = \"opacity:0.1;\"),\n              opts_hover(css= \"stroke-width:2;\")\n            ))\nx"
+  },
+  {
+    "objectID": "InteractiePlots.html#plot-2-using-plotly",
+    "href": "InteractiePlots.html#plot-2-using-plotly",
+    "title": "Interactive Plots",
+    "section": "Plot 2 (Using Plotly)",
+    "text": "Plot 2 (Using Plotly)\n\n\nShow the code\na<-ds2 %>% \n  ggplot(aes(price,points, text = paste(\"tasted by: \", taster_name,\n                                        \"<br>\",\n                                         \"description: \", description), color = points))+\n  geom_point(show.legend = FALSE)+\n  theme_bw()+\n  labs(title = \"Wine Price vs. Rating\", x = \"Rating\", y = \"Price\")\nggp <- ggplotly(a)\nggp %>% layout(hovermode = \"closest\")"
+  },
+  {
+    "objectID": "Presentation.html#about-me",
+    "href": "Presentation.html#about-me",
+    "title": "Presentation",
+    "section": "About Me",
+    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in aerospace and aspiring data scientist.\nI am interested in applying machine learning models to manufacturing problems to help predict and respond to issues before they occur."
+  },
+  {
+    "objectID": "Presentation.html#the-data",
+    "href": "Presentation.html#the-data",
+    "title": "Presentation",
+    "section": "The Data",
+    "text": "The Data"
+  },
+  {
+    "objectID": "Presentation.html#chart-1",
+    "href": "Presentation.html#chart-1",
+    "title": "Presentation",
+    "section": "Chart 1",
+    "text": "Chart 1\n\n\nShow the code\ngg <- ds2 %>% \n  select(taster_name) %>% \n  group_by(taster_name) %>% \n  summarise(taster_name, reviews = n()) %>% \n  distinct() %>% \n  arrange(reviews) %>% \n  ggplot(aes(reviews,reorder(taster_name,reviews), fill = taster_name))+\n  #geom_col()+\n  geom_col_interactive(aes(tooltip = taster_name, data_id = taster_name), show.legend = FALSE)+\n  scale_fill_viridis_d()+\n  labs(title = \"Which tasters have tasted the most?\")\nx <- girafe(ggobj = gg, width_svg = 8, height_svg = 6,\n            options = list(\n              opts_hover_inv(css = \"opacity:0.1;\"),\n              opts_hover(css= \"stroke-width:2;\")\n            ))\nx"
   }
 ]
