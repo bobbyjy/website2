@@ -65,9 +65,9 @@
   {
     "objectID": "Presentation.html#the-data",
     "href": "Presentation.html#the-data",
-    "title": "Presentation",
-    "section": "The Data",
-    "text": "The Data\n\n\nShow the code\n#some text here"
+    "title": "First RevealJs Deck!",
+    "section": "The data",
+    "text": "The data"
   },
   {
     "objectID": "Presentation.html#chart-1",
@@ -88,6 +88,6 @@
     "href": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
     "title": "First RevealJs Deck!",
     "section": "Here’s a classification project example that I completed for school",
-    "text": "Here’s a classification project example that I completed for school\n\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nHere’s an example of the data from this set:"
+    "text": "Here’s a classification project example that I completed for school\n\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nThe data I am using contains wines from different regions with price, rating, and description information.\nThe target variable is the wine province of origin.\nLets take a look at the dataset!"
   }
 ]

@@ -7,36 +7,13 @@ format:
    revealjs: 
     # multiplex: false
     # preview-links: true
-     theme: blood
+
+     smaller: true
     # code-fold: true
 ---
 
-```{css, include=FALSE}
 
-.title {
-  font-size: 120px !important;
-  color: red !important;
-}
 
-.author {
-  font-size: 100px;
-  color: blue;
-}
-
-.date {
-  font-size: 80px;
-  color: green;
-}
-
-```
-<style>
-    .reveal section p {
-    display: inline-block;
-    font-size: 0.6em;
-    line-height: 1.2em;
-    vertical-align: top;
-  }
-</style>
 
 ## About Me
 
@@ -46,8 +23,11 @@ format:
 
 ## Here's a classification project example that I completed for school
 - I will be using the caret library in conjunction with the wine dataset to do this analysis
-- Here's an example of the data from this set:
+- The data I am using contains wines from different regions with price, rating, and description information.
+- The target variable is the wine province of origin. 
+- Lets take a look at the dataset!
 
+## The data
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
@@ -59,7 +39,7 @@ library(rpart)
 library(randomForest)
 library(DT)
 wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds")
-datatable(head(wine, n = 3))
+datatable(head(wine, n = 2))
 
 ```
 

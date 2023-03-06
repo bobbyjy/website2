@@ -6,7 +6,7 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.2.313">
 
   <meta name="author" content="Corey Cassell">
@@ -329,7 +329,7 @@
   <link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
   <script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -346,17 +346,6 @@ Corey Cassell
 
   <p class="date">3/6/23</p>
 </section>
-<section class="slide level2">
-
-<style>
-    .reveal section p {
-    display: inline-block;
-    font-size: 0.6em;
-    line-height: 1.2em;
-    vertical-align: top;
-  }
-</style>
-</section>
 <section id="about-me" class="slide level2">
 <h2>About Me</h2>
 <ul>
@@ -369,13 +358,18 @@ Corey Cassell
 <h2>Here’s a classification project example that I completed for school</h2>
 <ul>
 <li>I will be using the caret library in conjunction with the wine dataset to do this analysis</li>
-<li>Here’s an example of the data from this set:</li>
+<li>The data I am using contains wines from different regions with price, rating, and description information.</li>
+<li>The target variable is the wine province of origin.</li>
+<li>Lets take a look at the dataset!</li>
 </ul>
+</section>
+<section id="the-data" class="slide level2">
+<h2>The data</h2>
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c44df44c3c430f470573" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-c44df44c3c430f470573">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[1,2,3],["Oregon","Oregon","California"],[65,20,69],[87,87,87],[2012,2013,2011],["Much like the regular bottling from 2012, this comes across as rather rough and tannic, with rustic, earthy, herbal characteristics. Nonetheless, if you think of it as a pleasantly unfussy country wine, it's a good companion to a hearty winter stew.","A sleek mix of tart berry, stem and herb, along with a hint of oak and chocolate, this is a fair value in a widely available, drink-now Oregon Pinot. The wine oak-aged for six months, whether in neutral or re-staved is not indicated.","Oak and earth intermingle around robust aromas of wet forest floor in this vineyard-designated Pinot that hails from a high-elevation site. Small in production, it offers intense, full-bodied raspberry and blackberry steeped in smoky spice and smooth texture."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>province<\/th>\n      <th>price<\/th>\n      <th>points<\/th>\n      <th>year<\/th>\n      <th>description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a0f4e2220c8a49af0bdc" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a0f4e2220c8a49af0bdc">{"x":{"filter":"none","vertical":false,"data":[["1","2"],[1,2],["Oregon","Oregon"],[65,20],[87,87],[2012,2013],["Much like the regular bottling from 2012, this comes across as rather rough and tannic, with rustic, earthy, herbal characteristics. Nonetheless, if you think of it as a pleasantly unfussy country wine, it's a good companion to a hearty winter stew.","A sleek mix of tart berry, stem and herb, along with a hint of oak and chocolate, this is a fair value in a widely available, drink-now Oregon Pinot. The wine oak-aged for six months, whether in neutral or re-staved is not indicated."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>province<\/th>\n      <th>price<\/th>\n      <th>points<\/th>\n      <th>year<\/th>\n      <th>description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -409,13 +403,13 @@ Corey Cassell
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
+'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
