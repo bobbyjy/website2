@@ -13,7 +13,7 @@ website:
       - href: InteractiePlots.qmd
         text: Interactive Plots
       - href: ParamMarkdown.qmd
-        text: Parameterized Markdown
+        text: Parameterized Markdown 
 
 format:
   html:
