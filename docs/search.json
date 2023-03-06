@@ -67,7 +67,7 @@
     "href": "Presentation.html#the-data",
     "title": "Presentation",
     "section": "The Data",
-    "text": "The Data"
+    "text": "The Data\n\n\nShow the code\n#some text here"
   },
   {
     "objectID": "Presentation.html#chart-1",
@@ -75,5 +75,19 @@
     "title": "Presentation",
     "section": "Chart 1",
     "text": "Chart 1\n\n\nShow the code\ngg <- ds2 %>% \n  select(taster_name) %>% \n  group_by(taster_name) %>% \n  summarise(taster_name, reviews = n()) %>% \n  distinct() %>% \n  arrange(reviews) %>% \n  ggplot(aes(reviews,reorder(taster_name,reviews), fill = taster_name))+\n  #geom_col()+\n  geom_col_interactive(aes(tooltip = taster_name, data_id = taster_name), show.legend = FALSE)+\n  scale_fill_viridis_d()+\n  labs(title = \"Which tasters have tasted the most?\")\nx <- girafe(ggobj = gg, width_svg = 8, height_svg = 6,\n            options = list(\n              opts_hover_inv(css = \"opacity:0.1;\"),\n              opts_hover(css= \"stroke-width:2;\")\n            ))\nx"
+  },
+  {
+    "objectID": "Presentation.html",
+    "href": "Presentation.html",
+    "title": "Presentation",
+    "section": "",
+    "text": "My name is Corey Cassell, I am an engineer in aerospace and aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur."
+  },
+  {
+    "objectID": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
+    "href": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
+    "title": "Presentation",
+    "section": "Here’s a classification project example that I completed for school",
+    "text": "Here’s a classification project example that I completed for school\n\n\nShow the code\n#some text here"
   }
 ]
