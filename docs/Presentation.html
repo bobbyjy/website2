@@ -318,6 +318,16 @@
       margin-right: 0; 
     }
   </style>
+  
+  <script src="site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+  <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+  <script src="site_libs/datatables-binding-0.27/datatables.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+  <script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+  <link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+  <script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -336,18 +346,37 @@ Corey Cassell
 
   <p class="date">3/6/23</p>
 </section>
+<section class="slide level2">
+
+<style>
+    .reveal section p {
+    display: inline-block;
+    font-size: 0.6em;
+    line-height: 1.2em;
+    vertical-align: top;
+  }
+</style>
+</section>
 <section id="about-me" class="slide level2">
 <h2>About Me</h2>
 <ul>
-<li>My name is Corey Cassell, I am an engineer in the commercial aerospace and an aspiring data scientist.</li>
+<li>My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.</li>
 <li>I am currently closing out the final half of my data science masters program.</li>
 <li>In particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur.</li>
 </ul>
 </section>
 <section id="heres-a-classification-project-example-that-i-completed-for-school" class="slide level2">
 <h2>Here’s a classification project example that I completed for school</h2>
+<ul>
+<li>I will be using the caret library in conjunction with the wine dataset to do this analysis</li>
+<li>Here’s an example of the data from this set:</li>
+</ul>
 <div class="cell">
+<div class="cell-output-display">
 
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c44df44c3c430f470573" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c44df44c3c430f470573">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],[1,2,3],["Oregon","Oregon","California"],[65,20,69],[87,87,87],[2012,2013,2011],["Much like the regular bottling from 2012, this comes across as rather rough and tannic, with rustic, earthy, herbal characteristics. Nonetheless, if you think of it as a pleasantly unfussy country wine, it's a good companion to a hearty winter stew.","A sleek mix of tart berry, stem and herb, along with a hint of oak and chocolate, this is a fair value in a widely available, drink-now Oregon Pinot. The wine oak-aged for six months, whether in neutral or re-staved is not indicated.","Oak and earth intermingle around robust aromas of wet forest floor in this vineyard-designated Pinot that hails from a high-elevation site. Small in production, it offers intense, full-bodied raspberry and blackberry steeped in smoky spice and smooth texture."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>province<\/th>\n      <th>price<\/th>\n      <th>points<\/th>\n      <th>year<\/th>\n      <th>description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
 </div>
 
 <div class="footer footer-default">

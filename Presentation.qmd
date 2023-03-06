@@ -29,19 +29,38 @@ format:
 }
 
 ```
+<style>
+    .reveal section p {
+    display: inline-block;
+    font-size: 0.6em;
+    line-height: 1.2em;
+    vertical-align: top;
+  }
+</style>
 
 ## About Me
 
-- My name is Corey Cassell, I am an engineer in the commercial aerospace and an aspiring data scientist.
+- My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.
 - I am currently closing out the final half of my data science masters program.
 - In particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. 
 
 ## Here's a classification project example that I completed for school
+- I will be using the caret library in conjunction with the wine dataset to do this analysis
+- Here's an example of the data from this set:
+
 ```{r}
 #| code-fold: true
 #| code-summary: "Show the code"
 
-#some text here 
+# add your libraries
+library(tidyverse)
+library(caret)
+library(rpart)
+library(randomForest)
+library(DT)
+wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds")
+datatable(head(wine, n = 3))
+
 ```
 
 
