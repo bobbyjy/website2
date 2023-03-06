@@ -1,18 +1,38 @@
 ---
-title: "Presentation"
+title: "First RevealJs Deck!"
 #image: "IMG_5192.JPG"
 author: "Corey Cassell"
-format: revealjs
-  # revealjs: 
+date: 03/06/2023
+format: 
+   revealjs: 
     # multiplex: false
     # preview-links: true
-    # theme: blood
+     theme: blood
     # code-fold: true
 ---
 
+```{css, include=FALSE}
+
+.title {
+  font-size: 120px !important;
+  color: red !important;
+}
+
+.author {
+  font-size: 100px;
+  color: blue;
+}
+
+.date {
+  font-size: 80px;
+  color: green;
+}
+
+```
+
 ## About Me
 
-- My name is Corey Cassell, I am an engineer in aerospace and aspiring data scientist.
+- My name is Corey Cassell, I am an engineer in the commercial aerospace and an aspiring data scientist.
 - I am currently closing out the final half of my data science masters program.
 - In particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. 
 

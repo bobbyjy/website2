@@ -58,9 +58,9 @@
   {
     "objectID": "Presentation.html#about-me",
     "href": "Presentation.html#about-me",
-    "title": "Presentation",
+    "title": "First RevealJs Deck!",
     "section": "About Me",
-    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in aerospace and aspiring data scientist.\nI am interested in applying machine learning models to manufacturing problems to help predict and respond to issues before they occur."
+    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in the commercial aerospace and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur."
   },
   {
     "objectID": "Presentation.html#the-data",
@@ -86,8 +86,8 @@
   {
     "objectID": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
     "href": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
-    "title": "Presentation",
+    "title": "First RevealJs Deck!",
     "section": "Here’s a classification project example that I completed for school",
-    "text": "Here’s a classification project example that I completed for school\n\n\nShow the code\n#some text here"
+    "text": "Here’s a classification project example that I completed for school"
   }
 ]
