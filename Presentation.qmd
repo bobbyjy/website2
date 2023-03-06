@@ -10,6 +10,15 @@ format: revealjs
      # smaller: true
      # code-fold: true
 ---
+```{r, echo=FALSE}
+library(tidyverse)
+library(caret)
+library(rpart)
+library(randomForest)
+library(DT)
+```
+
+
 ## About Me
 
 - My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.
@@ -22,18 +31,12 @@ format: revealjs
 - The target variable is the wine province of origin. 
 - Lets take a look at the dataset!
 
-## The data
+## Sources and Data
 ```{r, warning=FALSE,message=FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
-
-library(tidyverse)
-library(caret)
-library(rpart)
-library(randomForest)
-library(DT)
 wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds")
-datatable(head(wine, n = 2))
+#datatable(head(wine, n = 2))
 
 ```
 ## Text Parsing

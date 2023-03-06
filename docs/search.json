@@ -67,7 +67,7 @@
     "href": "Presentation.html#the-data",
     "title": "First RevealJs Deck!",
     "section": "The data",
-    "text": "The data\n\n\nShow the code\n# add your libraries\nlibrary(tidyverse)\nlibrary(caret)\nlibrary(rpart)\nlibrary(randomForest)\nlibrary(DT)\nwine = read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds\")\ndatatable(head(wine, n = 2))"
+    "text": "The data\n\n\nShow the code\nlibrary(tidyverse)\nlibrary(caret)\nlibrary(rpart)\nlibrary(randomForest)\nlibrary(DT)\nwine = read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds\")\ndatatable(head(wine, n = 2))"
   },
   {
     "objectID": "Presentation.html#chart-1",
@@ -81,7 +81,7 @@
     "href": "Presentation.html",
     "title": "First RevealJs Deck!",
     "section": "",
-    "text": "My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur."
+    "text": "── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0      ✔ purrr   1.0.1 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.5.0 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nLoading required package: lattice\n\n\nAttaching package: 'caret'\n\n\nThe following object is masked from 'package:purrr':\n\n    lift\n\n\nrandomForest 4.7-1.1\n\nType rfNews() to see new features/changes/bug fixes.\n\n\nAttaching package: 'randomForest'\n\n\nThe following object is masked from 'package:dplyr':\n\n    combine\n\n\nThe following object is masked from 'package:ggplot2':\n\n    margin"
   },
   {
     "objectID": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
@@ -96,5 +96,12 @@
     "title": "First RevealJs Deck!",
     "section": "Text Parsing",
     "text": "Text Parsing\n\nThe following function was used to take in a dataset with a text field, remove any stop words, only include words that occured over a certain threshold, and determine sensitivity to word roots.\n\n\n\nShow the code\nwine_words <- function(df, j = 1000, stem=F){ \n  library(tidytext)\n  library(SnowballC)\n  data(stop_words)\n\n  words <- df %>%\n    unnest_tokens(word, description) %>%\n    anti_join(stop_words) %>% # get rid of stop words\n    filter(!(word %in% c(\"wine\",\"pinot\",\"vineyard\")))\n  \n  if(stem){\n    words <- words %>% \n      mutate(word = wordStem(word))\n  }\n  \n  words <- words %>% \n    count(id, word) %>% \n    group_by(id) %>% \n    mutate(exists = (n>0)) %>% \n    ungroup %>% \n    group_by(word) %>% \n    mutate(total = sum(n)) %>% \n    filter(total > j) %>% \n    pivot_wider(id_cols = id, names_from = word, values_from = exists, values_fill = list(exists=0)) %>% \n    right_join(dplyr::select(df,id,province)) %>% \n    dplyr::select(-id) %>% \n    mutate(across(-province, ~replace_na(.x, F)))\n}"
+  },
+  {
+    "objectID": "Presentation.html#sources-and-data",
+    "href": "Presentation.html#sources-and-data",
+    "title": "First RevealJs Deck!",
+    "section": "Sources and Data",
+    "text": "Sources and Data\n\n\nShow the code\nwine = read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds\")\n#datatable(head(wine, n = 2))"
   }
 ]
