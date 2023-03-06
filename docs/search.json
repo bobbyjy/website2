@@ -67,7 +67,7 @@
     "href": "Presentation.html#the-data",
     "title": "First RevealJs Deck!",
     "section": "The data",
-    "text": "The data"
+    "text": "The data\n\n\nShow the code\n# add your libraries\nlibrary(tidyverse)\nlibrary(caret)\nlibrary(rpart)\nlibrary(randomForest)\nlibrary(DT)\nwine = read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds\")\ndatatable(head(wine, n = 2))"
   },
   {
     "objectID": "Presentation.html#chart-1",
@@ -79,9 +79,9 @@
   {
     "objectID": "Presentation.html",
     "href": "Presentation.html",
-    "title": "Presentation",
+    "title": "First RevealJs Deck!",
     "section": "",
-    "text": "My name is Corey Cassell, I am an engineer in aerospace and aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur."
+    "text": "My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur."
   },
   {
     "objectID": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
@@ -89,5 +89,12 @@
     "title": "First RevealJs Deck!",
     "section": "Here’s a classification project example that I completed for school",
     "text": "Here’s a classification project example that I completed for school\n\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nThe data I am using contains wines from different regions with price, rating, and description information.\nThe target variable is the wine province of origin.\nLets take a look at the dataset!"
+  },
+  {
+    "objectID": "Presentation.html#text-parsing",
+    "href": "Presentation.html#text-parsing",
+    "title": "First RevealJs Deck!",
+    "section": "Text Parsing",
+    "text": "Text Parsing\n\nThe following function was used to take in a dataset with a text field, remove any stop words, only include words that occured over a certain threshold, and determine sensitivity to word roots.\n\n\n\nShow the code\nwine_words <- function(df, j = 1000, stem=F){ \n  library(tidytext)\n  library(SnowballC)\n  data(stop_words)\n\n  words <- df %>%\n    unnest_tokens(word, description) %>%\n    anti_join(stop_words) %>% # get rid of stop words\n    filter(!(word %in% c(\"wine\",\"pinot\",\"vineyard\")))\n  \n  if(stem){\n    words <- words %>% \n      mutate(word = wordStem(word))\n  }\n  \n  words <- words %>% \n    count(id, word) %>% \n    group_by(id) %>% \n    mutate(exists = (n>0)) %>% \n    ungroup %>% \n    group_by(word) %>% \n    mutate(total = sum(n)) %>% \n    filter(total > j) %>% \n    pivot_wider(id_cols = id, names_from = word, values_from = exists, values_fill = list(exists=0)) %>% \n    right_join(dplyr::select(df,id,province)) %>% \n    dplyr::select(-id) %>% \n    mutate(across(-province, ~replace_na(.x, F)))\n}"
   }
 ]

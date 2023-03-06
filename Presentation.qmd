@@ -3,18 +3,13 @@ title: "First RevealJs Deck!"
 #image: "IMG_5192.JPG"
 author: "Corey Cassell"
 date: 03/06/2023
-format: 
-   revealjs: 
+format: revealjs
+   #revealjs: 
     # multiplex: false
     # preview-links: true
-
-     smaller: true
-    # code-fold: true
+     # smaller: true
+     # code-fold: true
 ---
-
-
-
-
 ## About Me
 
 - My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.
@@ -28,10 +23,9 @@ format:
 - Lets take a look at the dataset!
 
 ## The data
-```{r}
+```{r, warning=FALSE,message=FALSE}
 #| code-fold: true
 #| code-summary: "Show the code"
-
 # add your libraries
 library(tidyverse)
 library(caret)
@@ -42,7 +36,43 @@ wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds
 datatable(head(wine, n = 2))
 
 ```
+## Text Parsing
+- The following function was used to take in a dataset with a text field, remove any stop words, only include words that occured over a certain threshold, and determine sensitivity to word roots.
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+wine_words <- function(df, j = 1000, stem=F){ 
+  library(tidytext)
+  library(SnowballC)
+  data(stop_words)
 
+  words <- df %>%
+    unnest_tokens(word, description) %>%
+    anti_join(stop_words) %>% # get rid of stop words
+    filter(!(word %in% c("wine","pinot","vineyard")))
+  
+  if(stem){
+    words <- words %>% 
+      mutate(word = wordStem(word))
+  }
+  
+  words <- words %>% 
+    count(id, word) %>% 
+    group_by(id) %>% 
+    mutate(exists = (n>0)) %>% 
+    ungroup %>% 
+    group_by(word) %>% 
+    mutate(total = sum(n)) %>% 
+    filter(total > j) %>% 
+    pivot_wider(id_cols = id, names_from = word, values_from = exists, values_fill = list(exists=0)) %>% 
+    right_join(dplyr::select(df,id,province)) %>% 
+    dplyr::select(-id) %>% 
+    mutate(across(-province, ~replace_na(.x, F)))
+}
+
+```
+
+##
 
 
 
