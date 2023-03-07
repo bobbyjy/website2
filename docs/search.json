@@ -63,13 +63,6 @@
     "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. ## Here’s a classification project example that I completed for school\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nThe data I am using contains wines from different regions with price, rating, and description information.\nThe target variable is the wine province of origin.\nLets take a look at the dataset!"
   },
   {
-    "objectID": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
-    "href": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
-    "title": "First RevealJs Deck!",
-    "section": "Here’s a classification project example that I completed for school",
-    "text": "Here’s a classification project example that I completed for school\n\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nThe data I am using contains wines from different regions with price, rating, and description information.\nThe target variable is the wine province of origin.\nLets take a look at the dataset!"
-  },
-  {
     "objectID": "Presentation.html#sources-and-data",
     "href": "Presentation.html#sources-and-data",
     "title": "First RevealJs Deck!",
@@ -102,7 +95,7 @@
     "href": "Presentation2.html#about-me",
     "title": "First RevealJs Deck!",
     "section": "About Me",
-    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. ## Here’s a classification project example that I completed for school\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nThe data I am using contains wines from different regions with price, rating, and description information.\nThe target variable is the wine province of origin.\nLets take a look at the dataset!"
+    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur.\n\n\n\n\n\n\n\n## Here’s a classification project example that I completed for school - I will be using the caret library in conjunction with the wine dataset to do this analysis - The data I am using contains wines from different regions with price, rating, and description information. - The target variable is the wine province of origin. - Lets take a look at the dataset!"
   },
   {
     "objectID": "Presentation2.html#sources-and-data",

@@ -25,6 +25,8 @@ format:
 - My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.
 - I am currently closing out the final half of my data science masters program.
 - In particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. 
+
+---
 ## Here's a classification project example that I completed for school
 - I will be using the caret library in conjunction with the wine dataset to do this analysis
 - The data I am using contains wines from different regions with price, rating, and description information.
