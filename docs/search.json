@@ -63,27 +63,6 @@
     "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur."
   },
   {
-    "objectID": "Presentation.html#the-data",
-    "href": "Presentation.html#the-data",
-    "title": "First RevealJs Deck!",
-    "section": "The data",
-    "text": "The data\n\n\nShow the code\nlibrary(tidyverse)\nlibrary(caret)\nlibrary(rpart)\nlibrary(randomForest)\nlibrary(DT)\nwine = read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds\")\ndatatable(head(wine, n = 2))"
-  },
-  {
-    "objectID": "Presentation.html#chart-1",
-    "href": "Presentation.html#chart-1",
-    "title": "Presentation",
-    "section": "Chart 1",
-    "text": "Chart 1\n\n\nShow the code\ngg <- ds2 %>% \n  select(taster_name) %>% \n  group_by(taster_name) %>% \n  summarise(taster_name, reviews = n()) %>% \n  distinct() %>% \n  arrange(reviews) %>% \n  ggplot(aes(reviews,reorder(taster_name,reviews), fill = taster_name))+\n  #geom_col()+\n  geom_col_interactive(aes(tooltip = taster_name, data_id = taster_name), show.legend = FALSE)+\n  scale_fill_viridis_d()+\n  labs(title = \"Which tasters have tasted the most?\")\nx <- girafe(ggobj = gg, width_svg = 8, height_svg = 6,\n            options = list(\n              opts_hover_inv(css = \"opacity:0.1;\"),\n              opts_hover(css= \"stroke-width:2;\")\n            ))\nx"
-  },
-  {
-    "objectID": "Presentation.html",
-    "href": "Presentation.html",
-    "title": "First RevealJs Deck!",
-    "section": "",
-    "text": "── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──\n✔ ggplot2 3.4.0      ✔ purrr   1.0.1 \n✔ tibble  3.1.8      ✔ dplyr   1.0.10\n✔ tidyr   1.2.1      ✔ stringr 1.5.0 \n✔ readr   2.1.3      ✔ forcats 0.5.2 \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nLoading required package: lattice\n\n\nAttaching package: 'caret'\n\n\nThe following object is masked from 'package:purrr':\n\n    lift\n\n\nrandomForest 4.7-1.1\n\nType rfNews() to see new features/changes/bug fixes.\n\n\nAttaching package: 'randomForest'\n\n\nThe following object is masked from 'package:dplyr':\n\n    combine\n\n\nThe following object is masked from 'package:ggplot2':\n\n    margin"
-  },
-  {
     "objectID": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
     "href": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
     "title": "First RevealJs Deck!",
@@ -91,17 +70,31 @@
     "text": "Here’s a classification project example that I completed for school\n\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nThe data I am using contains wines from different regions with price, rating, and description information.\nThe target variable is the wine province of origin.\nLets take a look at the dataset!"
   },
   {
-    "objectID": "Presentation.html#text-parsing",
-    "href": "Presentation.html#text-parsing",
-    "title": "First RevealJs Deck!",
-    "section": "Text Parsing",
-    "text": "Text Parsing\n\nThe following function was used to take in a dataset with a text field, remove any stop words, only include words that occured over a certain threshold, and determine sensitivity to word roots.\n\n\n\nShow the code\nwine_words <- function(df, j = 1000, stem=F){ \n  library(tidytext)\n  library(SnowballC)\n  data(stop_words)\n\n  words <- df %>%\n    unnest_tokens(word, description) %>%\n    anti_join(stop_words) %>% # get rid of stop words\n    filter(!(word %in% c(\"wine\",\"pinot\",\"vineyard\")))\n  \n  if(stem){\n    words <- words %>% \n      mutate(word = wordStem(word))\n  }\n  \n  words <- words %>% \n    count(id, word) %>% \n    group_by(id) %>% \n    mutate(exists = (n>0)) %>% \n    ungroup %>% \n    group_by(word) %>% \n    mutate(total = sum(n)) %>% \n    filter(total > j) %>% \n    pivot_wider(id_cols = id, names_from = word, values_from = exists, values_fill = list(exists=0)) %>% \n    right_join(dplyr::select(df,id,province)) %>% \n    dplyr::select(-id) %>% \n    mutate(across(-province, ~replace_na(.x, F)))\n}"
-  },
-  {
     "objectID": "Presentation.html#sources-and-data",
     "href": "Presentation.html#sources-and-data",
     "title": "First RevealJs Deck!",
     "section": "Sources and Data",
-    "text": "Sources and Data\n\n\nShow the code\nwine = read_rds(\"https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds\")\n#datatable(head(wine, n = 2))"
+    "text": "Sources and Data"
+  },
+  {
+    "objectID": "Presentation.html#text-parsing",
+    "href": "Presentation.html#text-parsing",
+    "title": "First RevealJs Deck!",
+    "section": "Text Parsing",
+    "text": "Text Parsing\n\nThe following function was used to take in a dataset with a text field, remove any stop words, only include words that occured over a certain threshold, and determine sensitivity to word roots."
+  },
+  {
+    "objectID": "Presentation.html#feature-engineering",
+    "href": "Presentation.html#feature-engineering",
+    "title": "First RevealJs Deck!",
+    "section": "Feature Engineering",
+    "text": "Feature Engineering\n\nIn this step I apply the previously discussed function and set my word thrshold at 1000 occurences.\nExploring the data I observed that of the 6 provinces I was attempting to predict, 4 were extremely under represented.\nTo address this I chose to resample and even out the lower represented provinces while undersampling the higher representation provinces."
+  },
+  {
+    "objectID": "Presentation.html#results",
+    "href": "Presentation.html#results",
+    "title": "First RevealJs Deck!",
+    "section": "Results",
+    "text": "Results\n\nTo understand the overall validity of my model I used Kappa (the measure of how likely it would be to achieve these results at random) and a confusion matrix to visualize the quantity of correct and incorrect predictions by category.\n\n\n\nConfusion Matrix and Statistics\n\n                   Reference\nPrediction          Burgundy California Casablanca_Valley Marlborough New_York\n  Burgundy               198         15                 0           3        1\n  California              11        613                 5           5        9\n  Casablanca_Valley        0         12                21           3        1\n  Marlborough              1         23                 0          24        1\n  New_York                 1         21                 0           0       10\n  Oregon                  27        107                 0          10        4\n                   Reference\nPrediction          Oregon\n  Burgundy              24\n  California            90\n  Casablanca_Valley     14\n  Marlborough           25\n  New_York              10\n  Oregon               384\n\nOverall Statistics\n                                          \n               Accuracy : 0.7472          \n                 95% CI : (0.7256, 0.7678)\n    No Information Rate : 0.4728          \n    P-Value [Acc > NIR] : < 2.2e-16       \n                                          \n                  Kappa : 0.6206          \n                                          \n Mcnemar's Test P-Value : NA              \n\nStatistics by Class:\n\n                     Class: Burgundy Class: California Class: Casablanca_Valley\nSensitivity                   0.8319            0.7750                  0.80769\nSpecificity                   0.9700            0.8639                  0.98179\nPos Pred Value                0.8216            0.8363                  0.41176\nNeg Pred Value                0.9721            0.8106                  0.99692\nPrevalence                    0.1423            0.4728                  0.01554\nDetection Rate                0.1184            0.3664                  0.01255\nDetection Prevalence          0.1441            0.4381                  0.03048\nBalanced Accuracy             0.9010            0.8195                  0.89474\n                     Class: Marlborough Class: New_York Class: Oregon\nSensitivity                     0.53333        0.384615        0.7020\nSpecificity                     0.96929        0.980571        0.8686\nPos Pred Value                  0.32432        0.238095        0.7218\nNeg Pred Value                  0.98687        0.990190        0.8571\nPrevalence                      0.02690        0.015541        0.3270\nDetection Rate                  0.01435        0.005977        0.2295\nDetection Prevalence            0.04423        0.025105        0.3180\nBalanced Accuracy               0.75131        0.682593        0.7853"
   }
 ]

@@ -3,14 +3,16 @@ title: "First RevealJs Deck!"
 #image: "IMG_5192.JPG"
 author: "Corey Cassell"
 date: 03/06/2023
-format: revealjs
-   #revealjs: 
-    # multiplex: false
-    # preview-links: true
-     # smaller: true
-     # code-fold: true
+format: 
+   revealjs:
+      smaller: true
+      code-fold: true
+      code-overflow: wrap
+      code-tools: true
+
 ---
-```{r, echo=FALSE}
+
+```{r,warning=FALSE,message=FALSE, echo=FALSE}
 library(tidyverse)
 library(caret)
 library(rpart)
@@ -20,7 +22,6 @@ library(DT)
 
 
 ## About Me
-
 - My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.
 - I am currently closing out the final half of my data science masters program.
 - In particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. 
@@ -75,7 +76,88 @@ wine_words <- function(df, j = 1000, stem=F){
 
 ```
 
-##
+## Feature Engineering 
+- In this step I apply the previously discussed function and set my word thrshold at 1000 occurences.
+- Exploring the data I observed that of the 6 provinces I was attempting to predict, 4 were extremely under represented.
+- To address this I chose to resample and even out the lower represented provinces while undersampling the higher representation provinces. 
+```{r}
+#| code-fold: true
+#| code-summary: "Show the code"
+set.seed(500)
+wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds")
+#training the fit on the adjusted data set, played with some weightings but this didn't help a lot
+wine <- wine %>% 
+  mutate(points = scale(points, center = T, scale = T)) %>%
+  mutate(price = scale(log(price), center = T, scale = T)) 
 
+wino <- wine_words(wine, j=1000, stem = T)
+wino$price <- wine$price
+wino$points <- wine$points
+wine_index <- createDataPartition(wino$province, p = 0.80, list = FALSE)
+train <- wino[ wine_index, ]
+###the model can't look at the test set...###
+test <- wino[-wine_index, ]
+
+
+####conduct data duplication on only the train set####
+sample_size = 400
+
+burg_sample <- train %>%
+  filter(province=='Burgundy') %>% 
+    sample_n(sample_size, replace = T)
+
+cali_sample <- train %>%
+  filter(province=='California') %>% 
+    sample_n(800, replace = T) #800 got .84
+
+casa_sample <- train %>%
+  filter(province=='Casablanca_Valley') %>% 
+    sample_n(sample_size, replace = T)
+
+marl_sample <- train %>%
+  filter(province=='Marlborough') %>% 
+    sample_n(sample_size, replace = T)
+
+york_sample <- train %>%
+  filter(province=='New_York') %>% 
+    sample_n(sample_size, replace = T)
+
+oreg_sample <- train %>%
+  filter(province=='Oregon') %>% 
+    sample_n(800, replace = T) #800 got .84
+
+train <- rbind(burg_sample,cali_sample,casa_sample,marl_sample,york_sample,oreg_sample)
+
+#train
+
+weight_train <- train %>% 
+  mutate(weights=case_when(
+    province=="Burgundy" ~ 1,
+    province=="California" ~ 1,
+    province=="Casablanca_Valley" ~ 1,
+    province=="Marlborough" ~ 1,
+    province=="New_York" ~ 1,
+    province=="Oregon" ~ 1))
+
+ctrl <- trainControl(method = "repeatedcv", number = 5, repeats = 1)
+
+fit <- train(province ~ .,
+             data = train,
+             method = "rf",
+             trControl = ctrl,
+             ntree=100,
+             weights = weight_train$weights
+             )
+
+ pred <- predict(fit, newdata=test)
+
+
+```
+
+## Results
+- To understand the overall validity of my model I used Kappa (the measure of how likely it would be to achieve these results at random) and a confusion matrix to visualize the quantity of correct and incorrect predictions by category. 
+```{r}
+ confusionMatrix(factor(pred),factor(test$province))
+```
 
 
