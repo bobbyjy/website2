@@ -9,23 +9,13 @@ format:
       code-fold: true
       code-overflow: wrap
       code-tools: true
-
 ---
-
-```{r,warning=FALSE,message=FALSE, echo=FALSE}
-library(tidyverse)
-library(caret)
-library(rpart)
-library(randomForest)
-library(DT)
-```
 
 
 ## About Me
 - My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.
 - I am currently closing out the final half of my data science masters program.
 - In particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. 
-
 ## Here's a classification project example that I completed for school
 - I will be using the caret library in conjunction with the wine dataset to do this analysis
 - The data I am using contains wines from different regions with price, rating, and description information.
@@ -34,17 +24,25 @@ library(DT)
 
 ## Sources and Data
 ```{r, warning=FALSE,message=FALSE}
-#| code-fold: true
-#| code-summary: "Show the code"
+library(caret)
+library(rpart)
+library(randomForest)
+library(DT)
+library(tidyverse)
+library(caret)
+library(fastDummies)
+library(rpart)
+library(rpart.plot)
+library(pROC)
+library(randomForest)
 wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds")
 #datatable(head(wine, n = 2))
 
 ```
+
 ## Text Parsing
 - The following function was used to take in a dataset with a text field, remove any stop words, only include words that occured over a certain threshold, and determine sensitivity to word roots.
 ```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
 wine_words <- function(df, j = 1000, stem=F){ 
   library(tidytext)
   library(SnowballC)
@@ -81,8 +79,6 @@ wine_words <- function(df, j = 1000, stem=F){
 - Exploring the data I observed that of the 6 provinces I was attempting to predict, 4 were extremely under represented.
 - To address this I chose to resample and even out the lower represented provinces while undersampling the higher representation provinces. 
 ```{r}
-#| code-fold: true
-#| code-summary: "Show the code"
 set.seed(500)
 wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds")
 #training the fit on the adjusted data set, played with some weightings but this didn't help a lot
@@ -97,7 +93,6 @@ wine_index <- createDataPartition(wino$province, p = 0.80, list = FALSE)
 train <- wino[ wine_index, ]
 ###the model can't look at the test set...###
 test <- wino[-wine_index, ]
-
 
 ####conduct data duplication on only the train set####
 sample_size = 400
@@ -153,6 +148,7 @@ fit <- train(province ~ .,
 
 
 ```
+
 
 ## Results
 - To understand the overall validity of my model I used Kappa (the measure of how likely it would be to achieve these results at random) and a confusion matrix to visualize the quantity of correct and incorrect predictions by category. 

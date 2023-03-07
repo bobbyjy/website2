@@ -60,7 +60,7 @@
     "href": "Presentation.html#about-me",
     "title": "First RevealJs Deck!",
     "section": "About Me",
-    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur."
+    "text": "About Me\n\nMy name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.\nI am currently closing out the final half of my data science masters program.\nIn particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. ## Here’s a classification project example that I completed for school\nI will be using the caret library in conjunction with the wine dataset to do this analysis\nThe data I am using contains wines from different regions with price, rating, and description information.\nThe target variable is the wine province of origin.\nLets take a look at the dataset!"
   },
   {
     "objectID": "Presentation.html#heres-a-classification-project-example-that-i-completed-for-school",
