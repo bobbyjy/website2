@@ -1,15 +1,27 @@
 ---
 title: "First RevealJs Deck!"
+#image: "IMG_5192.JPG"
 author: "Corey Cassell"
 date: 03/06/2023
 format: 
    revealjs:
-    code-fold: true
     theme: blood
+    html-math-method: katex
+    incremental: true
+    slide-number: c/t
+    transition: concave
+    code-fold: true
+    code-overflow: wrap
+    code-tools: true
+    preview-links: true
+    embed-resources: true
+    fig-responsive: true
 ---
 
+---
 
 ## About Me
+
 - My name is Corey Cassell, I am an engineer in the commercial aerospace industry and an aspiring data scientist.
 - I am currently closing out the final half of my data science masters program.
 - In particular I am interested in applying machine learning models to manufacturing problems to help predict and respond to daily production gaps before they occur. 
@@ -19,8 +31,10 @@ format:
 - The target variable is the wine province of origin. 
 - Lets take a look at the dataset!
 
+---
+
 ## Sources and Data
-```{r, warning=FALSE,message=FALSE}
+```{r setup, warning=FALSE,message=FALSE}
 library(caret)
 library(rpart)
 library(randomForest)
@@ -36,10 +50,12 @@ wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds
 #datatable(head(wine, n = 2))
 
 ```
+---
 
 ## Text Parsing
 - The following function was used to take in a dataset with a text field, remove any stop words, only include words that occured over a certain threshold, and determine sensitivity to word roots.
 ```{r, warning=FALSE,message=FALSE}
+#| echo: true
 wine_words <- function(df, j = 1000, stem=F){ 
   library(tidytext)
   library(SnowballC)
@@ -76,6 +92,7 @@ wine_words <- function(df, j = 1000, stem=F){
 - Exploring the data I observed that of the 6 provinces I was attempting to predict, 4 were extremely under represented.
 - To address this I chose to resample and even out the lower represented provinces while undersampling the higher representation provinces. 
 ```{r, warning=FALSE,message=FALSE}
+#| echo: true
 set.seed(500)
 wine = read_rds("https://raw.githubusercontent.com/bobbyjy/MyData/main/pinot.rds")
 #training the fit on the adjusted data set, played with some weightings but this didn't help a lot
@@ -150,6 +167,7 @@ fit <- train(province ~ .,
 ## Results
 - To understand the overall validity of my model I used Kappa (the measure of how likely it would be to achieve these results at random) and a confusion matrix to visualize the quantity of correct and incorrect predictions by category. 
 ```{r, warning=FALSE,message=FALSE}
+#| echo: true
  confusionMatrix(factor(pred),factor(test$province))
 ```
 
