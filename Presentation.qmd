@@ -5,10 +5,10 @@ author: "Corey Cassell"
 date: 03/06/2023
 format: 
    revealjs:
-      smaller: true
       code-fold: true
       code-overflow: wrap
       code-tools: true
+      theme: blood
 ---
 
 
